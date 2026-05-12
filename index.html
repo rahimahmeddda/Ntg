@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billi Proposal</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fce4ec;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        #container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #d81b60;
+            font-size: 2rem;
+        }
+        .cat-img {
+            width: 200px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yesBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        #celebration {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="main-content">
+            <h1 id="question">Billi will you be my future?</h1>
+            <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?q=80&w=200&h=200&auto=format&fit=crop" alt="Cute Cat" class="cat-img" id="displayImg">
+            
+            <div class="buttons">
+                <button id="yesBtn">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div id="celebration">
+            <h1>Knew you would say yes! 🎉</h1>
+            <p>You just made me the happiest person! ❤️</p>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eWJ5eWJ5eWJ5eWJ5eWJ5eWJ5eWJ5eWJ5eWJ5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Happy Cat" class="cat-img">
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const mainContent = document.getElementById('main-content');
+        const celebration = document.getElementById('celebration');
+
+        let noCount = 0;
+        const messages = [
+            "No",
+            "Are you positive?",
+            "Halim plz 🥺", // pokkie plz বদলে Halim plz
+            "If you say no, I will be really sad...",
+            "I will be very sad...",
+            "Please???",
+            "Don't do this to me...",
+            "Last chance!!"
+        ];
+
+        noBtn.addEventListener('click', () => {
+            noCount++;
+            if (noCount < messages.length) {
+                noBtn.innerText = messages[noCount];
+            } else {
+                noBtn.innerText = messages[messages.length - 1];
+            }
+
+            // 'Yes' বাটন বড় করা
+            const currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize * 1.4) + 'px';
+            yesBtn.style.padding = (parseFloat(window.getComputedStyle(yesBtn).paddingTop) * 1.2) + 'px ' + 
+                                  (parseFloat(window.getComputedStyle(yesBtn).paddingLeft) * 1.2) + 'px';
+        });
+
+        yesBtn.addEventListener('click', () => {
+            mainContent.style.display = 'none';
+            celebration.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
